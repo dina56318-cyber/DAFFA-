@@ -53,49 +53,46 @@
         }
         .hero {
             background: linear-gradient(135deg, #fcecee, #f7f0f1);
-            padding: 40px 5% 20px 5%;
+            padding: 30px 5% 15px 5%;
             text-align: center;
         }
         .hero h1 {
             font-size: 32px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: #4a4042;
         }
         .hero p {
-            font-size: 16px;
+            font-size: 15px;
             color: #7a6b6e;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .store-banner-container {
-            max-width: 1000px;
-            margin: 0 auto 30px auto;
+            max-width: 500px;
+            margin: 0 auto 20px auto;
             padding: 0 20px;
+            text-align: center;
         }
         .store-banner {
             width: 100%;
-            max-height: 400px;
+            max-height: 350px;
             object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(216, 155, 159, 0.2);
         }
-        .container {
+        /* قسم الأقسام الأفقية جنب بعضها تحت البانر مباشرة */
+        .categories-section {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 0 auto 30px auto;
             padding: 0 20px;
         }
-        .section-title {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 24px;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-        /* تصميم الأقسام (Categories) */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
+        .categories-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         .category-card {
             background: var(--white);
@@ -103,180 +100,11 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             text-align: center;
+            width: 130px;
+            flex-shrink: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(216, 155, 159, 0.2);
-        }
-        .category-img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-        }
-        .category-name {
-            padding: 15px;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-            letter-spacing: 0.5px;
-        }
-        /* شبكة المنتجات */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            text-align: center;
-            padding-bottom: 15px;
-        }
-        .product-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .product-info {
-            padding: 15px;
-        }
-        .product-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .product-price {
-            color: #d89b9f;
-            font-weight: 700;
-            font-size: 15px;
-            margin-bottom: 12px;
-        }
-        .add-to-cart {
-            background-color: var(--primary-pink);
-            color: var(--text-dark);
-            border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        .add-to-cart:hover {
-            background-color: #e5b9bd;
-        }
-        footer {
-            background-color: #4a4042;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-            font-size: 13px;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="announcement-bar">
-        ✨ أهلاً بكِ في عالم الأناقة والجمال ✨
-    </div>
-
-    <header>
-        <div class="logo">DAFFA <span>Store</span></div>
-        <div class="cart-icon"><i class="fas fa-shopping-bag"></i></div>
-    </header>
-
-    <section class="hero">
-        <h1>متجر DAFFA 🌸</h1>
-        <p>تشكيلة راقية من العطور، البادي سبلاش، والميكب لتناسب رقتك.</p>
-    </section>
-
-    <!-- صورة الواجهة الفخمة للمتجر -->
-    <div class="store-banner-container">
-        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" alt="DAFFA Store Banner" class="store-banner">
-    </div>
-
-    <div class="container">
-        <!-- قسم الأقسام الرئيسية باللغة الإنجليزية وصور بناتي رقيقة -->
-        <h2 class="section-title">Shop By Categories</h2>
-        <div class="categories-grid">
-            
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=400&auto=format&fit=crop" alt="Perfumes" class="category-img">
-                <div class="category-name">Perfumes</div>
-            </div>
-
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop" alt="Pajamas" class="category-img">
-                <div class="category-name">Pajamas</div>
-            </div>
-
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1608248597359-915b31f7983b?q=80&w=400&auto=format&fit=crop" alt="Body Splash" class="category-img">
-                <div class="category-name">Body Splash</div>
-            </div>
-
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=400&auto=format&fit=crop" alt="Accessories" class="category-img">
-                <div class="category-name">Accessories</div>
-            </div>
-
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop" alt="Mugs" class="category-img">
-                <div class="category-name">Mugs</div>
-            </div>
-
-        </div>
-
-        <!-- قسم المنتجات -->
-        <h2 class="section-title">Featured Products</h2>
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=400&auto=format&fit=crop" alt="Perfume" class="product-img">
-                <div class="product-info">
-                    <div class="product-title">عطر فانيلا ناعم</div>
-                    <div class="product-price">350 ج.م</div>
-                    <button class="add-to-cart">أضف للسلة</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=400&auto=format&fit=crop" alt="Body Splash" class="product-img">
-                <div class="product-info">
-                    <div class="product-title">بادي سبلاش جوز الهند</div>
-                    <div class="product-price">250 ج.م</div>
-                    <button class="add-to-cart">أضف للسلة</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=400&auto=format&fit=crop" alt="Makeup" class="product-img">
-                <div class="product-info">
-                    <div class="product-title">مجموعة ميكب يومي</div>
-                    <div class="product-price">400 ج.م</div>
-                    <button class="add-to-cart">أضف للسلة</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=400&auto=format&fit=crop" alt="Pajamas" class="product-img">
-                <div class="product-info">
-                    <div class="product-title">بيجامة منزلية ناعمة</div>
-                    <div class="product-price">450 ج.م</div>
-                    <button class="add-to-cart">أضف للسلة</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © DAFFA Store 2026 💖</p>
-    </footer>
-
-</body>
-</html>
+            transform: translateY(-4px);
+            box-
