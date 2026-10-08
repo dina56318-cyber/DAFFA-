@@ -332,11 +332,745 @@
 
     <!-- البانر -->
     <div class="store-banner-container">
-        <img src="banner.jpg" alt="DAFFA Store Banner" class="store-banner">
+        <img src="https://dina56318-cyber.github.io/DAFFA-/banner.jpg" alt="DAFFA Store Banner" class="store-banner">
     </div>
 
     <!-- الأقسام الأفقية -->
     <div class="categories-section">
         <div class="categories-scroll">
             <div class="category-card" onclick="filterCategory('Perfumes')">
-                <img src="perfume.jpg" alt="
+                <img src="https://dina56318-cyber.github.io/DAFFA-/perfume.jpg" alt="Perfumes" class="category-img">
+                <div class="category-name">Perfumes</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Pajamas')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/pajamas.jpg" alt="Pajamas" class="category-img">
+                <div class="category-name">Pajamas</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Body Splash')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/bodysplash.jpg" alt="Body Splash" class="category-img">
+                <div class="category-name">Body Splash</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Accessories')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/accessories.jpg" alt="Accessories" class="category-img">
+                <div class="category-name">Accessories</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Mugs')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/mugs.jpg" alt="Mugs" class="category-img">
+                <div class="category-name">Mugs</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" id="sectionTitle">Featured Products</h2>
+            <button class="show-all-btn" onclick="filterCategory('All')">عرض الكل</button>
+        </div>
+        
+        <!-- شبكة المنتجات التفاعلية -->
+        <div class="products-grid" id="productsGrid">
+            <!-- المنتجات تتعبى اوتوماتيك بالـ JavaScript -->
+        </div>
+    </div>
+
+    <!-- نافذة إتمام الطلب والسلة -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>سلة المشتريات وإتمام الطلب</h3>
+                <button class="close-modal" onclick="closeCartModal()">&times;</button>
+            </div>
+            <div class="cart-items-list" id="cartItemsList">
+                <p style="text-align: center; color: #777;">السلة فارغة حالياً</p>
+            </div>
+            <div style="font-weight: 700; margin-bottom: 15px; text-align: left;" id="cartTotal">الإجمالي: 0 ج.م</div>
+            
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>الاسم بالكامل</label>
+                    <input type="text" id="custName" required placeholder="أدخل اسمك الكريم">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف الأول (رقم الموبايل)</label>
+                    <input type="tel" id="phone1" required placeholder="01xxxxxxxxox">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف الثاني (للتأكيد الاحتياطي)</label>
+                    <input type="tel" id="phone2" required placeholder="01xxxxxxxxox">
+                </div>
+                <div class="form-group">
+                    <label>المحافظة</label>
+                    <select id="governorate" required>
+                        <option value="">اختر المحافظة</option>
+                        <option value="القاهرة">القاهرة</option>
+                        <option value="الجيزة">الجيزة</option>
+                        <option value="الإسكندرية">الإسكندرية</option>
+                        <option value="الدقهلية">الدقهلية</option>
+                        <option value="الشرقية">الشرقية</option>
+                        <option value="الغربية">الغربية</option>
+                        <option value="القليوبية">القليوبية</option>
+                        <option value="أسيوط">أسيوط</option>
+                        <option value="سوهاج">سوهاج</option>
+                        <option value="أخرى">محافظة أخرى</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>العنوان بالتفصيل (الشارع - العمارة - الدور)</label>
+                    <input type="text" id="address" required placeholder="اكتب عنوانك بدقة">
+                </div>
+                <div class="form-group">
+                    <label>طريقة الدفع</label>
+                    <select id="paymentMethod" required>
+                        <option value="محفظة إلكترونية / فودافون كاش">محفظة إلكترونية / فودافون كاش</option>
+                    </select>
+                </div>
+                <button type="submit" class="checkout-btn">تأكيد الطلب الآن 🛍️</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © DAFFA Store 2026 💖</p>
+    </footer>
+
+    <script>
+        // قاعدة بيانات المنتجات مع ربط الصور بروابط الموقع المباشرة
+        const products = [
+            { id: 1, name: 'عطر كيالي فانيلا كاندي', category: 'Perfumes', price: 350, img: 'https://dina56318-cyber.github.io/DAFFA-/perfume.jpg' },
+            { id: 2, name: 'عطر فانيلا ناعم مركز', category: 'Perfumes', price: 380, img: 'https://dina56318-cyber.github.io/DAFFA-/perfume.jpg' },
+            { id: 3, name: 'بيجامة قطن حريرية ناعمة', category: 'Pajamas', price: 450, img: 'https://dina56318-cyber.github.io/DAFFA-/pajamas.jpg' },
+            { id: 4, name: 'بيجامة شتوي منزلية', category: 'Pajamas', price: 420, img: 'https://dina56318-cyber.github.io/DAFFA-/pajamas.jpg' },
+            { id: 5, name: 'بادي سبلاش جوز الهند الكريمي', category: 'Body Splash', price: 250, img: 'https://dina56318-cyber.github.io/DAFFA-/bodysplash.jpg' },
+            { id: 6, name: 'بادي سبلاش فانيلا كاندي', category: 'Body Splash', price: 270, img: 'https://dina56318-cyber.github.io/DAFFA-/bodysplash.jpg' },
+            { id: 7, name: 'مجموعة اكسسوارات رقيقة', category: 'Accessories', price: 180, img: 'https://dina56318-cyber.github.io/DAFFA-/accessories.jpg' },
+            { id: 8, name: 'سلسلة رقيقة مرصعة', category: 'Accessories', price: 200, img: 'https://dina56318-cyber.github.io/DAFFA-/accessories.jpg' },
+            { id: 9, name: 'مج قهوة بنوتي بتصميم مميز', category: 'Mugs', price: 150, img: 'https://dina56318-cyber.github.io/DAFFA-/mugs.jpg' },
+            { id: 10, name: 'مج حراري بتصميم أنيق', category: 'Mugs', price: 190, img: 'https://dina56318-cyber.github.io/DAFFA-/mugs.jpg' }
+        ];
+
+        let cart = [];
+
+        function displayProducts(filterCat = 'All') {
+            const grid = document.getElementById('productsGrid');
+            const title = document.getElementById('sectionTitle');
+            grid.innerHTML = '';
+
+            let filtered = filterCat === 'All' ? products : products.filter(p => p.category === filterCat);
+            title.innerText = filterCat === 'All' ? 'Featured Products' : `قسم ${filterCat}`;
+
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <img src="${p.img}" alt="${p.name}" class="product-img">
+                        <div class="product-info">
+                            <div class="product-title">${p.name}</div>
+                            <div class="product-price">${p.price} ج.م</div>
+                            <button class="add-to-cart" onclick="addToCart(${p.id})">أضف للسلة</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterCategory(cat) {
+            displayProducts(cat);
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            alert(`تم إضافة "${product.name}" إلى السلة بنجاح! 🌸`);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+            const totalDiv = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #777;">السلة فارغة حالياً</p>';
+                totalDiv.innerText = 'الإجمالي: 0 ج.م';
+                return;
+            }
+
+            list.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                list.innerHTML += `
+                    <div class="cart-item-row">
+                        <span>${item.name}</span>
+                        <span>${item.price} ج.م</span>
+                    </div>
+                `;
+            });
+            totalDiv.innerText = `الإجمالي: ${total} ج.م`;
+        }
+
+        function openCartModal() {
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            if(cart.length === 0) {
+                alert('السلة فارغة! أضف منتجات أولاً.');
+                return;
+            }
+            const name = document.getElementById('custName').value;
+            const p1 = document.getElementById('phone1').value;
+            const gov = document.getElementById('governorate').value;
+            
+            alert(`شكراً لكِ يا ${name}! تم تسجيل طلبك بنجاح وسيتم التواصل معكِ على الرقم (${p1}) وشحن الطلب إلى محافظة (${gov}) عن طريق المحفظة الإلكترونية. 🌸✨`);
+            cart = [];
+            updateCartUI();
+            closeCartModal();
+        }
+
+        // تشغيل عرض المنتجات لأول مرة
+        displayProducts('All');
+    </script>
+</body><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAFFA Store | عالمك الخاص من الجمال والأناقة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #f4d1d4;
+            --soft-bg: #fcf9f9;
+            --text-dark: #4a4042;
+            --white: #ffffff;
+            --gray-light: #f7f0f1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: var(--soft-bg);
+            color: var(--text-dark);
+        }
+        .announcement-bar {
+            background-color: var(--primary-pink);
+            color: var(--text-dark);
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        header {
+            background-color: var(--white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .logo span {
+            color: #d89b9f;
+        }
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-dark);
+            position: relative;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #d89b9f;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: 700;
+        }
+        .hero {
+            background: linear-gradient(135deg, #fcecee, #f7f0f1);
+            padding: 30px 5% 15px 5%;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+            color: #4a4042;
+        }
+        .hero p {
+            font-size: 15px;
+            color: #7a6b6e;
+            margin-bottom: 15px;
+        }
+        .store-banner-container {
+            max-width: 500px;
+            margin: 0 auto 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .store-banner {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(216, 155, 159, 0.2);
+        }
+        /* الأقسام */
+        .categories-section {
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            padding: 0 20px;
+        }
+        .categories-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .category-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            text-align: center;
+            width: 130px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .category-card:hover, .category-card.active {
+            transform: translateY(-4px);
+            border-color: #d89b9f;
+            box-shadow: 0 8px 20px rgba(216, 155, 159, 0.25);
+        }
+        .category-img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+        }
+        .category-name {
+            padding: 8px 5px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .section-title {
+            font-size: 22px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        .show-all-btn {
+            background: none;
+            border: 1px solid #d89b9f;
+            color: #d89b9f;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .show-all-btn:hover {
+            background-color: #fcecee;
+        }
+        /* شبكة المنتجات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: var(--gray-light);
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .product-price {
+            color: #d89b9f;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        .add-to-cart {
+            background-color: var(--primary-pink);
+            color: var(--text-dark);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .add-to-cart:hover {
+            background-color: #e5b9bd;
+        }
+        /* نافذة السلة وإتمام الطلب (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        .modal-content {
+            background: var(--white);
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--gray-light);
+            padding-bottom: 10px;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #7a6b6e;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Cairo';
+            font-size: 14px;
+        }
+        .checkout-btn {
+            width: 100%;
+            background-color: #d89b9f;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .checkout-btn:hover {
+            background-color: #c7888c;
+        }
+        .cart-items-list {
+            margin-bottom: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-bottom: 1px solid var(--gray-light);
+            padding-bottom: 10px;
+        }
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        footer {
+            background-color: #4a4042;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        ✨ أهلاً بكِ في عالم الأناقة والجمال ✨
+    </div>
+
+    <header>
+        <div class="logo">DAFFA <span>Store</span></div>
+        <button class="cart-icon-btn" onclick="openCartModal()">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-badge" id="cartCount">0</span>
+        </button>
+    </header>
+
+    <section class="hero">
+        <h1>متجر DAFFA 🌸</h1>
+        <p>تشكيلة راقية من العطور، البادي سبلاش، والميكب لتناسب رقتك.</p>
+    </section>
+
+    <!-- البانر -->
+    <div class="store-banner-container">
+        <img src="https://dina56318-cyber.github.io/DAFFA-/banner.jpg" alt="DAFFA Store Banner" class="store-banner">
+    </div>
+
+    <!-- الأقسام الأفقية -->
+    <div class="categories-section">
+        <div class="categories-scroll">
+            <div class="category-card" onclick="filterCategory('Perfumes')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/perfume.jpg" alt="Perfumes" class="category-img">
+                <div class="category-name">Perfumes</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Pajamas')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/pajamas.jpg" alt="Pajamas" class="category-img">
+                <div class="category-name">Pajamas</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Body Splash')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/bodysplash.jpg" alt="Body Splash" class="category-img">
+                <div class="category-name">Body Splash</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Accessories')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/accessories.jpg" alt="Accessories" class="category-img">
+                <div class="category-name">Accessories</div>
+            </div>
+            <div class="category-card" onclick="filterCategory('Mugs')">
+                <img src="https://dina56318-cyber.github.io/DAFFA-/mugs.jpg" alt="Mugs" class="category-img">
+                <div class="category-name">Mugs</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" id="sectionTitle">Featured Products</h2>
+            <button class="show-all-btn" onclick="filterCategory('All')">عرض الكل</button>
+        </div>
+        
+        <!-- شبكة المنتجات التفاعلية -->
+        <div class="products-grid" id="productsGrid">
+            <!-- المنتجات تتعبى اوتوماتيك بالـ JavaScript -->
+        </div>
+    </div>
+
+    <!-- نافذة إتمام الطلب والسلة -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>سلة المشتريات وإتمام الطلب</h3>
+                <button class="close-modal" onclick="closeCartModal()">&times;</button>
+            </div>
+            <div class="cart-items-list" id="cartItemsList">
+                <p style="text-align: center; color: #777;">السلة فارغة حالياً</p>
+            </div>
+            <div style="font-weight: 700; margin-bottom: 15px; text-align: left;" id="cartTotal">الإجمالي: 0 ج.م</div>
+            
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>الاسم بالكامل</label>
+                    <input type="text" id="custName" required placeholder="أدخل اسمك الكريم">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف الأول (رقم الموبايل)</label>
+                    <input type="tel" id="phone1" required placeholder="01xxxxxxxxox">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف الثاني (للتأكيد الاحتياطي)</label>
+                    <input type="tel" id="phone2" required placeholder="01xxxxxxxxox">
+                </div>
+                <div class="form-group">
+                    <label>المحافظة</label>
+                    <select id="governorate" required>
+                        <option value="">اختر المحافظة</option>
+                        <option value="القاهرة">القاهرة</option>
+                        <option value="الجيزة">الجيزة</option>
+                        <option value="الإسكندرية">الإسكندرية</option>
+                        <option value="الدقهلية">الدقهلية</option>
+                        <option value="الشرقية">الشرقية</option>
+                        <option value="الغربية">الغربية</option>
+                        <option value="القليوبية">القليوبية</option>
+                        <option value="أسيوط">أسيوط</option>
+                        <option value="سوهاج">سوهاج</option>
+                        <option value="أخرى">محافظة أخرى</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>العنوان بالتفصيل (الشارع - العمارة - الدور)</label>
+                    <input type="text" id="address" required placeholder="اكتب عنوانك بدقة">
+                </div>
+                <div class="form-group">
+                    <label>طريقة الدفع</label>
+                    <select id="paymentMethod" required>
+                        <option value="محفظة إلكترونية / فودافون كاش">محفظة إلكترونية / فودافون كاش</option>
+                    </select>
+                </div>
+                <button type="submit" class="checkout-btn">تأكيد الطلب الآن 🛍️</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © DAFFA Store 2026 💖</p>
+    </footer>
+
+    <script>
+        // قاعدة بيانات المنتجات مع ربط الصور بروابط الموقع المباشرة
+        const products = [
+            { id: 1, name: 'عطر كيالي فانيلا كاندي', category: 'Perfumes', price: 350, img: 'https://dina56318-cyber.github.io/DAFFA-/perfume.jpg' },
+            { id: 2, name: 'عطر فانيلا ناعم مركز', category: 'Perfumes', price: 380, img: 'https://dina56318-cyber.github.io/DAFFA-/perfume.jpg' },
+            { id: 3, name: 'بيجامة قطن حريرية ناعمة', category: 'Pajamas', price: 450, img: 'https://dina56318-cyber.github.io/DAFFA-/pajamas.jpg' },
+            { id: 4, name: 'بيجامة شتوي منزلية', category: 'Pajamas', price: 420, img: 'https://dina56318-cyber.github.io/DAFFA-/pajamas.jpg' },
+            { id: 5, name: 'بادي سبلاش جوز الهند الكريمي', category: 'Body Splash', price: 250, img: 'https://dina56318-cyber.github.io/DAFFA-/bodysplash.jpg' },
+            { id: 6, name: 'بادي سبلاش فانيلا كاندي', category: 'Body Splash', price: 270, img: 'https://dina56318-cyber.github.io/DAFFA-/bodysplash.jpg' },
+            { id: 7, name: 'مجموعة اكسسوارات رقيقة', category: 'Accessories', price: 180, img: 'https://dina56318-cyber.github.io/DAFFA-/accessories.jpg' },
+            { id: 8, name: 'سلسلة رقيقة مرصعة', category: 'Accessories', price: 200, img: 'https://dina56318-cyber.github.io/DAFFA-/accessories.jpg' },
+            { id: 9, name: 'مج قهوة بنوتي بتصميم مميز', category: 'Mugs', price: 150, img: 'https://dina56318-cyber.github.io/DAFFA-/mugs.jpg' },
+            { id: 10, name: 'مج حراري بتصميم أنيق', category: 'Mugs', price: 190, img: 'https://dina56318-cyber.github.io/DAFFA-/mugs.jpg' }
+        ];
+
+        let cart = [];
+
+        function displayProducts(filterCat = 'All') {
+            const grid = document.getElementById('productsGrid');
+            const title = document.getElementById('sectionTitle');
+            grid.innerHTML = '';
+
+            let filtered = filterCat === 'All' ? products : products.filter(p => p.category === filterCat);
+            title.innerText = filterCat === 'All' ? 'Featured Products' : `قسم ${filterCat}`;
+
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <img src="${p.img}" alt="${p.name}" class="product-img">
+                        <div class="product-info">
+                            <div class="product-title">${p.name}</div>
+                            <div class="product-price">${p.price} ج.م</div>
+                            <button class="add-to-cart" onclick="addToCart(${p.id})">أضف للسلة</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterCategory(cat) {
+            displayProducts(cat);
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            alert(`تم إضافة "${product.name}" إلى السلة بنجاح! 🌸`);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+            const totalDiv = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #777;">السلة فارغة حالياً</p>';
+                totalDiv.innerText = 'الإجمالي: 0 ج.م';
+                return;
+            }
+
+            list.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                list.innerHTML += `
+                    <div class="cart-item-row">
+                        <span>${item.name}</span>
+                        <span>${item.price} ج.م</span>
+                    </div>
+                `;
+            });
+            totalDiv.innerText = `الإجمالي: ${total} ج.م`;
+        }
+
+        function openCartModal() {
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            if(cart.length === 0) {
+                alert('السلة فارغة! أضف منتجات أولاً.');
+                return;
+            }
+            const name = document.getElementById('custName').value;
+            const p1 = document.getElementById('phone1').value;
+            const gov = document.getElementById('governorate').value;
+            
+            alert(`شكراً لكِ يا ${name}! تم تسجيل طلبك بنجاح وسيتم التواصل معكِ على الرقم (${p1}) وشحن الطلب إلى محافظة (${gov}) عن طريق المحفظة الإلكترونية. 🌸✨`);
+            cart = [];
+            updateCartUI();
+            closeCartModal();
+        }
+
+        // تشغيل عرض المنتجات لأول مرة
+        displayProducts('All');
+    </script>
+</body>
+</html>
