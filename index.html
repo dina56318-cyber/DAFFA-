@@ -16,16 +16,16 @@
         .hero { text-align: center; padding: 25px 15px; background: #fcecee; }
         .hero h2 { font-size: 26px; margin-bottom: 5px; color: #4a4042; }
         .banner-box { max-width: 450px; margin: 20px auto; padding: 0 15px; text-align: center; }
-        .banner-box img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 25px rgba(216, 155, 159, 0.25); }
+        .banner-box img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 25px rgba(216, 155, 159, 0.25); background-color: #f7f0f1; }
         .categories { display: flex; gap: 12px; overflow-x: auto; padding: 10px 15px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
         .cat-card { background: #fff; border-radius: 15px; width: 130px; text-align: center; padding: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.04); flex-shrink: 0; transition: transform 0.2s; border: 2px solid transparent; }
         .cat-card:hover { transform: translateY(-3px); border-color: #d89b9f; }
-        .cat-card img { width: 100%; height: 90px; object-fit: cover; border-radius: 10px; }
+        .cat-card img { width: 100%; height: 90px; object-fit: cover; border-radius: 10px; background-color: #f7f0f1; }
         .cat-name { font-size: 13px; font-weight: 700; margin-top: 8px; color: #4a4042; }
         .container { max-width: 1100px; margin: 25px auto; padding: 0 15px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
         .product-card { background: #fff; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; }
+        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; background-color: #f7f0f1; }
         .p-title { font-size: 15px; font-weight: 600; margin: 10px 0 5px 0; }
         .p-price { color: #d89b9f; font-weight: 700; font-size: 14px; margin-bottom: 12px; }
         .add-btn { background: #f4d1d4; border: none; padding: 8px 18px; border-radius: 20px; font-weight: 600; cursor: pointer; font-family: 'Cairo'; color: #4a4042; transition: background 0.2s; }
@@ -53,31 +53,31 @@
         <p style="font-size: 14px; color: #7a6b6e;">عالمك الخاص من الجمال والأناقة</p>
     </div>
 
-    <!-- البانر الرئيسي -->
+    <!-- البانر الخاص بك -->
     <div class="banner-box">
-        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Banner">
+        <img src="./banner.jpg" alt="Banner">
     </div>
 
-    <!-- الأقسام -->
+    <!-- الأقسام بصورك الأصلية -->
     <div class="categories">
         <div class="cat-card" onclick="filterPrs('Perfumes')">
-            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=400&auto=format&fit=crop" alt="Perfumes">
+            <img src="./perfume.jpg" alt="Perfumes">
             <div class="cat-name">Perfumes</div>
         </div>
         <div class="cat-card" onclick="filterPrs('Pajamas')">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop" alt="Pajamas">
+            <img src="./pajamas.jpg" alt="Pajamas">
             <div class="cat-name">Pajamas</div>
         </div>
         <div class="cat-card" onclick="filterPrs('Body Splash')">
-            <img src="https://images.unsplash.com/photo-1608248597359-915b31f7983b?q=80&w=400&auto=format&fit=crop" alt="Body Splash">
+            <img src="./bodysplash.jpg" alt="Body Splash">
             <div class="cat-name">Body Splash</div>
         </div>
         <div class="cat-card" onclick="filterPrs('Accessories')">
-            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=400&auto=format&fit=crop" alt="Accessories">
+            <img src="./accessories.jpg" alt="Accessories">
             <div class="cat-name">Accessories</div>
         </div>
         <div class="cat-card" onclick="filterPrs('Mugs')">
-            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop" alt="Mugs">
+            <img src="./mugs.jpg" alt="Mugs">
             <div class="cat-name">Mugs</div>
         </div>
     </div>
@@ -111,6 +111,7 @@
                     <option value="الإسكندرية">الإسكندرية</option>
                     <option value="الدقهلية">الدقهلية</option>
                     <option value="الشرقية">الشرقية</option>
+                    <option value="الغربية">الغربية</option>
                     <option value="القليوبية">القليوبية</option>
                     <option value="أسيوط">أسيوط</option>
                     <option value="سوهاج">سوهاج</option>
@@ -131,16 +132,16 @@
 
     <script>
         const db = [
-            { id: 1, name: 'عطر كيالي فانيلا كاندي', cat: 'Perfumes', price: 350, img: 'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=400&auto=format&fit=crop' },
-            { id: 2, name: 'عطر فانيلا ناعم مركز', cat: 'Perfumes', price: 380, img: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=400&auto=format&fit=crop' },
-            { id: 3, name: 'بيجامة قطن حريرية ناعمة', cat: 'Pajamas', price: 450, img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop' },
-            { id: 4, name: 'بيجامة شتوي منزلية', cat: 'Pajamas', price: 420, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=400&auto=format&fit=crop' },
-            { id: 5, name: 'بادي سبلاش جوز الهند الكريمي', cat: 'Body Splash', price: 250, img: 'https://images.unsplash.com/photo-1608248597359-915b31f7983b?q=80&w=400&auto=format&fit=crop' },
-            { id: 6, name: 'بادي سبلاش فانيلا كاندي', cat: 'Body Splash', price: 270, img: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=400&auto=format&fit=crop' },
-            { id: 7, name: 'مجموعة اكسسوارات رقيقة', cat: 'Accessories', price: 180, img: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=400&auto=format&fit=crop' },
-            { id: 8, name: 'سلسلة رقيقة مرصعة', cat: 'Accessories', price: 200, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=400&auto=format&fit=crop' },
-            { id: 9, name: 'مج قهوة بنوتي مميز', cat: 'Mugs', price: 150, img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop' },
-            { id: 10, name: 'مج حراري بتصميم أنيق', cat: 'Mugs', price: 190, img: 'https://images.unsplash.com/photo-1577805947697-89e18249d767?q=80&w=400&auto=format&fit=crop' }
+            { id: 1, name: 'عطر كيالي فانيلا كاندي', cat: 'Perfumes', price: 350, img: './perfume.jpg' },
+            { id: 2, name: 'عطر فانيلا ناعم مركز', cat: 'Perfumes', price: 380, img: './perfume.jpg' },
+            { id: 3, name: 'بيجامة قطن حريرية ناعمة', cat: 'Pajamas', price: 450, img: './pajamas.jpg' },
+            { id: 4, name: 'بيجامة شتوي منزلية', cat: 'Pajamas', price: 420, img: './pajamas.jpg' },
+            { id: 5, name: 'بادي سبلاش جوز الهند الكريمي', cat: 'Body Splash', price: 250, img: './bodysplash.jpg' },
+            { id: 6, name: 'بادي سبلاش فانيلا كاندي', cat: 'Body Splash', price: 270, img: './bodysplash.jpg' },
+            { id: 7, name: 'مجموعة اكسسوارات رقيقة', cat: 'Accessories', price: 180, img: './accessories.jpg' },
+            { id: 8, name: 'سلسلة رقيقة مرصعة', cat: 'Accessories', price: 200, img: './accessories.jpg' },
+            { id: 9, name: 'مج قهوة بنوتي مميز', cat: 'Mugs', price: 150, img: './mugs.jpg' },
+            { id: 10, name: 'مج حراري بتصميم أنيق', cat: 'Mugs', price: 190, img: './mugs.jpg' }
         ];
 
         let cart = [];
